@@ -1,3 +1,5 @@
+import unittest
+
 class BinaryConverter:
 
     @staticmethod
@@ -10,9 +12,14 @@ class BinaryConverter:
                 break
         return int("".join([str(i) for i in arr]))
 
+class BinaryConverterTest(unittest.TestCase):
+
+    def test_base10_to_binary(self):
+        for i in range(10000):
+            self.assertEqual(BinaryConverter.base10_to_binary(i), int(bin(i).replace("0b", "")))
+
 def main():
-    for i in range(256):
-        print(BinaryConverter.base10_to_binary(i))
+    unittest.main()
 
 if __name__ == "__main__":
     main()
