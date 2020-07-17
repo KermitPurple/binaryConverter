@@ -12,6 +12,13 @@ class BinaryConverter:
                 break
         return int("".join([str(i) for i in arr]))
 
+    def binary_to_base10(num: int) -> int:
+        s = str(num)
+        output = 0
+        for i in range(len(s)):
+            output += int(s[i]) * 2 ** (len(s) - i - 1)
+        return output
+
 class BinaryConverterTest(unittest.TestCase):
 
     def test_base10_to_binary(self):
@@ -19,7 +26,8 @@ class BinaryConverterTest(unittest.TestCase):
             self.assertEqual(BinaryConverter.base10_to_binary(i), int(bin(i).replace("0b", "")))
 
 def main():
-    unittest.main()
+    # unittest.main()
+    print(BinaryConverter.binary_to_base10(11111111))
 
 if __name__ == "__main__":
     main()
